@@ -478,9 +478,11 @@ class LSTMCell(RNNCellBase):
         self.hidden_size = hidden_size
         self.bias = bias
         self.weight_ih = Parameter(torch.Tensor(4 * hidden_size, input_size))
+        self.weight_ch = Parameter(torch.Tensor(4 * hidden_size, input_size))
         self.weight_hh = Parameter(torch.Tensor(4 * hidden_size, hidden_size))
         if bias:
             self.bias_ih = Parameter(torch.Tensor(4 * hidden_size))
+            self.bias_ch = Parameter(torch.Tensor(4 * hidden_size))
             self.bias_hh = Parameter(torch.Tensor(4 * hidden_size))
         else:
             self.register_parameter('bias_ih', None)
