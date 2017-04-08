@@ -24,7 +24,7 @@ def _initialize_backend():
     from .._functions.batchnorm import BatchNorm
     from .._functions.conv import ConvNd
     from .._functions.rnn import RNN, \
-        RNNTanhCell, RNNReLUCell, GRUCell, LSTMCell
+        RNNTanhCell, RNNReLUCell, GRUCell, ConditionedLSTMCell, LSTMCell
     from .._functions.dropout import Dropout, FeatureDropout
     from .._functions.activation import Softsign
     from .._functions.loss import CosineEmbeddingLoss, \
@@ -36,6 +36,7 @@ def _initialize_backend():
     backend.register_function('RNN', RNN)
     backend.register_function('RNNTanhCell', RNNTanhCell)
     backend.register_function('RNNReLUCell', RNNReLUCell)
+    backend.register_function('ConditionedLSTMCell', ConditionedLSTMCell)
     backend.register_function('LSTMCell', LSTMCell)
     backend.register_function('GRUCell', GRUCell)
     backend.register_function('Dropout', Dropout)

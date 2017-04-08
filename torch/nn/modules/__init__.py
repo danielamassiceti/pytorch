@@ -19,7 +19,7 @@ from .padding import ReflectionPad2d, ReplicationPad2d, ReplicationPad3d
 from .normalization import CrossMapLRN2d
 from .sparse import Embedding
 from .rnn import RNNBase, RNN, LSTM, GRU, \
-    RNNCell, LSTMCell, GRUCell
+    RNNCell, ConditionedLSTMCell, LSTMCell, GRUCell
 from .pixelshuffle import PixelShuffle
 from .upsampling import UpsamplingNearest2d, UpsamplingBilinear2d
 from .distance import PairwiseDistance
@@ -38,7 +38,7 @@ __all__ = [
     'MaxPool3d', 'MaxUnpool1d', 'MaxUnpool2d', 'MaxUnpool3d', 'FractionalMaxPool2d',
     'LPPool2d', 'BatchNorm1d', 'BatchNorm2d', 'BatchNorm3d', 'Dropout', 'Dropout2d',
     'Dropout3d', 'ReflectionPad2d', 'ReplicationPad2d', 'ReplicationPad3d', 'CrossMapLRN2d',
-    'Embedding', 'RNNBase', 'RNN', 'LSTM', 'GRU', 'RNNCell', 'LSTMCell', 'GRUCell',
+    'Embedding', 'RNNBase', 'RNN', 'LSTM', 'GRU', 'RNNCell', 'ConditionedLSTMCell', 'LSTMCell', 'GRUCell',
     'PixelShuffle', 'UpsamplingNearest2d', 'UpsamplingBilinear2d', 'PairwiseDistance',
     'AdaptiveMaxPool1d', 'AdaptiveMaxPool2d', 'AdaptiveAvgPool1d', 'AdaptiveAvgPool2d',
 ]
