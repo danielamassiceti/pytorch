@@ -8,12 +8,13 @@ from .activation import Threshold, ReLU, Hardtanh, ReLU6, Sigmoid, Tanh, \
 from .loss import L1Loss, NLLLoss, KLDivLoss, MSELoss, BCELoss, NLLLoss2d, \
     CosineEmbeddingLoss, HingeEmbeddingLoss, MarginRankingLoss, \
     MultiLabelMarginLoss, MultiLabelSoftMarginLoss, MultiMarginLoss, \
-    SmoothL1Loss, SoftMarginLoss, CrossEntropyLoss
+    SmoothL1Loss, SoftMarginLoss, CrossEntropyLoss, TripletMarginLoss
 from .container import Container, Sequential, ModuleList, ParameterList
 from .pooling import AvgPool1d, AvgPool2d, AvgPool3d, MaxPool1d, MaxPool2d, MaxPool3d, \
     MaxUnpool1d, MaxUnpool2d, MaxUnpool3d, FractionalMaxPool2d, LPPool2d, AdaptiveMaxPool1d, \
     AdaptiveMaxPool2d, AdaptiveAvgPool1d, AdaptiveAvgPool2d
 from .batchnorm import BatchNorm1d, BatchNorm2d, BatchNorm3d
+from .instancenorm import InstanceNorm1d, InstanceNorm2d, InstanceNorm3d
 from .dropout import Dropout, Dropout2d, Dropout3d
 from .padding import ReflectionPad2d, ReplicationPad2d, ReplicationPad3d
 from .normalization import CrossMapLRN2d
@@ -41,4 +42,5 @@ __all__ = [
     'Embedding', 'RNNBase', 'RNN', 'LSTM', 'GRU', 'RNNCell', 'ConditionedLSTMCell', 'LSTMCell', 'GRUCell',
     'PixelShuffle', 'UpsamplingNearest2d', 'UpsamplingBilinear2d', 'PairwiseDistance',
     'AdaptiveMaxPool1d', 'AdaptiveMaxPool2d', 'AdaptiveAvgPool1d', 'AdaptiveAvgPool2d',
+    'TripletMarginLoss'
 ]
