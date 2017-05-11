@@ -113,6 +113,10 @@ def small_2d_lapack_fat(t):
     return t(4, 3).copy_(torch.arange(1, 13).view(4, 3))
 
 
+def large_2d_lapack(t):
+    return t(1000, 1000).normal_()
+
+
 def new_t(*sizes):
     def tmp(t):
         return t(*sizes).copy_(torch.randn(*sizes))
@@ -257,9 +261,9 @@ tests = [
     ('transpose', new_t(1, 2, 3, 4), lambda t: [1, 2],),
     ('transpose', new_t(1, 2, 3, 4), lambda t: [-1, -2], 'neg_dim'),
     ('to_list', small_3d, lambda t: [],),
-    ('topk', small_3d, lambda t: [2, 1, False, True], 'dim_sort'),
-    ('topk', small_3d, lambda t: [2, -1, False, True], 'neg_dim_sort'),
-    ('topk', small_3d, lambda t: [2, 1, True, True], 'dim_desc_sort'),
+    ('topk', small_3d_unique, lambda t: [2, 1, False, True], 'dim_sort'),
+    ('topk', small_3d_unique, lambda t: [2, -1, False, True], 'neg_dim_sort'),
+    ('topk', small_3d_unique, lambda t: [2, 1, True, True], 'dim_desc_sort'),
     ('trace', medium_2d, lambda t: [],),
     ('tril', medium_2d, lambda t: [],),
     ('tril', medium_2d, lambda t: [2], 'positive'),
@@ -280,6 +284,7 @@ tests = [
     ('qr', small_2d_lapack, lambda t: [], 'square', float_types),
     ('qr', small_2d_lapack_skinny, lambda t: [], 'skinny', float_types),
     ('qr', small_2d_lapack_fat, lambda t: [], 'fat', float_types),
+    ('qr', large_2d_lapack, lambda t: [], 'big', float_types),
 
 ]
 
@@ -294,6 +299,7 @@ custom_precision = {
     'baddbmm': 1e-4,
     'rsqrt': 1e-4,
     'cumprod': 1e-4,
+    'qr': 1e-4,
 }
 
 simple_pointwise = [
@@ -828,6 +834,15 @@ class TestCuda(TestCase):
 
     def test_btrisolve(self):
         TestTorch._test_btrisolve(self, lambda t: t.cuda())
+
+    def test_tensor_gather(self):
+        TestTorch._test_gather(self, lambda t: t.cuda(), False)
+
+    def test_tensor_scatter(self):
+        TestTorch._test_scatter(self, lambda t: t.cuda(), False)
+
+    def test_tensor_scatterFill(self):
+        TestTorch._test_scatterFill(self, lambda t: t.cuda(), False)
 
 
 if HAS_CUDA:
