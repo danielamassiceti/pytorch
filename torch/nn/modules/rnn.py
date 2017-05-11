@@ -442,7 +442,6 @@ class ConditionedLSTMCell(RNNCellBase):
 
     Args:
         input_size: The number of expected features in the input x
-        context: The number of expected features in the context c
         hidden_size: The number of features in the hidden state h
         bias: If `False`, then the layer does not use bias weights `b_ih`, `b_ch' and `b_hh`. Default: True
 
